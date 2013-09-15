@@ -4,5 +4,7 @@
     <string name="app_name">Blast</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="blast_color">#34495e</string>
+    <string name="api_endpoint">http://ndv.arkt.is/api/v1.1/pictures/?format=json</string>
 
 </resources>
