@@ -11,6 +11,7 @@ import android.widget.ListView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.PauseOnScrollListener;
 
 import java.util.ArrayList;
 
@@ -48,6 +49,12 @@ public class BlastActivity extends Activity
         ListView mPhotosListView = (ListView) findViewById(R.id.lv_photos);
         mPhotoListAdapter = new PhotoListAdapter(this, mPhotos);
         mPhotosListView.setAdapter(mPhotoListAdapter);
+
+        // Bind onScrollPauseLoading listener
+        boolean pauseOnScroll = false; // or true
+        boolean pauseOnFling = true; // or false
+        PauseOnScrollListener listener = new PauseOnScrollListener(ImageLoader.getInstance(), pauseOnScroll, pauseOnFling);
+        mPhotosListView.setOnScrollListener(listener);
 
         // Initialize the pullToRefreshAttacher
         mPullToRefreshAttacher = PullToRefreshAttacher.get(this);
