@@ -7,10 +7,13 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
 
 public class FetchFeedTask extends AsyncTask<Void, Void, Void> {
     private final OnTaskCompleted mListener;
-    private final ArrayList<Photo> mPhotos;
+    private ArrayList<Photo> mPhotos;
 
     public FetchFeedTask(OnTaskCompleted listener, ArrayList<Photo> mPhotos) {
         this.mListener = listener;
@@ -23,9 +26,13 @@ public class FetchFeedTask extends AsyncTask<Void, Void, Void> {
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
         PhotoWrapper photoWrapper = restTemplate.getForObject(((Context) mListener).getString(R.string.api_feed), PhotoWrapper.class);
 
-        for (int i=0; i<photoWrapper.getPhotos().length; i++) {
-            mPhotos.add(photoWrapper.getPhotos()[i]);
-        }
+        HashSet<Photo> photoPool = new HashSet<Photo>();
+        photoPool.addAll(mPhotos);
+        photoPool.addAll(Arrays.asList(photoWrapper.getPhotos()));
+
+        mPhotos.clear();
+        mPhotos.addAll(photoPool);
+        Collections.sort(mPhotos, Collections.reverseOrder());
 
         return null;
     }

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Photo  {
+public class Photo implements Comparable<Photo> {
 	private int id;
     private int height;
     private int width;
@@ -76,5 +76,38 @@ public class Photo  {
                 ", resourceUri='" + resourceUri + '\'' +
                 ", pictureUrl='" + pictureUrl + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Photo another) {
+        if (this.getId() == another.getId()) {
+            return 0;
+        } else if (this.getId() > another.getId()) {
+            return 1;
+        } else {
+            return -1;
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + id;
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (this.getClass() != obj.getClass())
+            return false;
+        Photo other = (Photo) obj;
+        if (id != other.id)
+            return false;
+        return true;
     }
 }
