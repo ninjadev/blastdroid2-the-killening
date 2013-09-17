@@ -48,9 +48,11 @@ public class PhotoListAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.photo_element, null);
         }
 
+        ImageView ivPhoto = (ImageView) convertView.findViewById(R.id.iv_photo);
+        ivPhoto.setMaxHeight(getItem(position).getHeight());
         mImageLoader.displayImage(
                 mCtx.getString(R.string.api_uploads) + getItem(position).getPictureUrl(),
-                (ImageView) convertView.findViewById(R.id.iv_photo));
+                ivPhoto);
 
         return convertView;
     }
