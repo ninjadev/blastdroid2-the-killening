@@ -4,17 +4,10 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
 
-    <ScrollView
-            android:id="@+id/scrollview"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:padding="8dp"
-            android:scrollbarStyle="outsideInset">
-
-        <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Jensemann"/>
-    </ScrollView>
+    <ListView
+            android:id="@+id/lv_photos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+    </ListView>
 
 </uk.co.senab.actionbarpulltorefresh.library.PullToRefreshLayout>

@@ -21,7 +21,7 @@ public class FetchFeedTask extends AsyncTask<Void, Void, Void> {
     protected Void doInBackground(Void... params) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-        PhotoWrapper photoWrapper = restTemplate.getForObject(((Context) mListener).getString(R.string.api_endpoint), PhotoWrapper.class);
+        PhotoWrapper photoWrapper = restTemplate.getForObject(((Context) mListener).getString(R.string.api_feed), PhotoWrapper.class);
 
         for (int i=0; i<photoWrapper.getPhotos().length; i++) {
             mPhotos.add(photoWrapper.getPhotos()[i]);

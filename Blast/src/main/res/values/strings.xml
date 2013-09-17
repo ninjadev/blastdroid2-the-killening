@@ -2,9 +2,16 @@
 <resources>
 
     <string name="app_name">Blast</string>
+    <string name="app_color">#34495e</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="blast_color">#34495e</string>
-    <string name="api_endpoint">http://ndv.arkt.is/api/v1.1/pictures/?format=json</string>
+    <string name="api_feed">http://ndv.arkt.is/api/v1.1/pictures/?format=json</string>
+    <string name="api_uploads">http://ndv.arkt.is/uploads/</string>
+    <string name="ptrf_pull">Check for updates</string>
+    <string name="ptrf_refreshing">Refreshing...</string>
+    <string name="ptrf_refresh_success">Feed refreshed</string>
+    <string name="ptrf_refresh_failure">Couldn\'t refresh feed. Are you connected to the internets?</string>
+    <string name="upload_success">Picture successfully uploaded</string>
+    <string name="upload_failure">Picture upload failed. Are you connected to the internets?</string>
 
 </resources>
