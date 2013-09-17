@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.ListView;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
@@ -33,8 +34,12 @@ public class BlastActivity extends Activity
         getActionBar().setBackgroundDrawable(colorDrawable);
 
         // Instantiate ImageLoader
-        ImageLoaderConfiguration config =
-                new ImageLoaderConfiguration.Builder(getApplicationContext())
+        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+                .cacheInMemory(true)
+                .cacheOnDisc(true)
+                .build();
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
+                .defaultDisplayImageOptions(defaultOptions)
                 .build();
         ImageLoader.getInstance().init(config);
 
